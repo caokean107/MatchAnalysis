@@ -84,7 +84,7 @@ for i in Usuerscore:
         bbb=case['UploadNum']
         ZScore.append(bb)
         Znum.append(bbb)
-ZScore= Zscore(ZScore) #注意，这里的values是array
+ZScore= Zscore(ZScore) #注意，这里的参数是array
 Znum=Zscore(Znum)
 count=0
 for i in Usuerscore:
