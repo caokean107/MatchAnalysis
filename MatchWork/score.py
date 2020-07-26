@@ -28,17 +28,17 @@ Filetime = open('testTime.json', encoding='utf-8')
 Testtime = json.loads(Filetime.read())
 
 #获取运行时间数据，并将其标准化后重新存入
-a=[]
+Ztime=[]
 for i in Testtime:
     for case in Testtime[i]:
         b=case['time']
         c=0 if b==0 else 1/b
-        a.append(c)
-a = Zscore(a) #注意，这里的参数是array
+        Ztime.append(c)
+Ztime = Zscore(Ztime) #注意，这里的参数是array
 count=0
 for i in Testtime:
     for case in Testtime[i]:
-        case['time']=a[count]
+        case['time']=Ztime[count]
         count=count+1
 
 #构建自己需要的score.json文件
@@ -76,21 +76,21 @@ for key in TestData:
     if len(Cases) != 0:
         Usuerscore[user_id] = {"cases": Cases}
 #标准化score文件里的分数和提交次数两项指标
-aa=[]
-aaa=[]
+ZScore=[]
+Znum=[]
 for i in Usuerscore:
     for case in Usuerscore[i]['cases']:
         bb=case['score']
         bbb=case['UploadNum']
-        aa.append(bb)
-        aaa.append(bbb)
-aa= Zscore(aa) #注意，这里的values是array
-aaa=Zscore(aaa)
+        ZScore.append(bb)
+        Znum.append(bbb)
+ZScore= Zscore(ZScore) #注意，这里的values是array
+Znum=Zscore(Znum)
 count=0
 for i in Usuerscore:
     for case in Usuerscore[i]['cases']:
-        case['score']=aa[count]
-        case['UploadNum']=aaa[count]
+        case['score']=ZScore[count]
+        case['UploadNum']=Znum[count]
         count=count+1
 
 NewjsonFile = json.dumps(Usuerscore, indent=4, ensure_ascii=False)
